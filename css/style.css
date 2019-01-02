@@ -15,7 +15,7 @@ header{
 }
 
 main{
-width: 100%;
+
 }
 
 footer{
@@ -28,6 +28,26 @@ h1, h2 {
 	font-family: 'Staatliches', cursive;
 
 }
+
+li{
+	list-style: none;
+}
+
+nav li{
+
+}
+
+.participant{
+
+
+}
+
+.participant img{
+
+	float: left;
+
+}
+
 
 
 
