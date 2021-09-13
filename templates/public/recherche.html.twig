@@ -1,0 +1,69 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Recherche{% endblock %}
+
+
+{% block body %}
+    <h1>RECHERCHE</h1>
+    <section>
+        <form class="search">
+            <input type="text" name="recherche" required>
+            <button>RECHERCHER</button>
+       <div class="listeResultat">
+            </div>
+        </form>
+    </section>
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+        
+<script>
+
+urlAjax = '{{ path("ajax") }}';
+url = '{{ path("home") }}';
+
+$(function () {
+  
+    
+    $("form.search").on("submit", function(event){
+        event.preventDefault();
+        console.log("formulaire bloqué");
+
+        paramFormGet = $(this).serialize();
+        console.log(paramFormGet);
+        var listeResultat = $(this).find(".listeResultat");
+        listeResultat.html(""); // VIDE LA LISTE
+
+        $.post(urlAjax, paramFormGet, function(data){
+
+            console.log(data);
+    
+            for(a=0; a < data.tabArticle.length; a++)
+            {
+                console.log(a);
+                var article = data.tabArticle[a];
+                var title = article.title;
+                var content = article.content;
+                var image = article.urlImage;
+                var codeHTML = '<article>' 
+                                    + '<h4>' + title + '</h4>'
+                                    + '<div>' + content + '</div>'
+                                     + '<div><img src="'+ url + image + '" style="width:100px; height:100px; object-fit:cover;"></div>'
+                                + '</article>';
+                listeResultat.append(codeHTML);    
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+        
+{% endblock %}
+
+

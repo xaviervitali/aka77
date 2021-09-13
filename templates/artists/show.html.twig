@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon artiste - AKA77{% endblock %}
+
+{% block body %}
+
+    <h1 style="width:50%;float:left;margin-top:0px!important;text-transform:capitalize;text-align:left;">-{{ artist.pseudo }}-</h1>
+
+    <img src="{{ artist.urlImageAvatar }}" alt="" style="width:180px!important;max-width:180px!important;height:180px!important;max-height:180px!important;float:right;margin-bottom:20px;">
+
+
+
+    <table class="table">
+        <tbody>
+       {# <tr>
+                <th>Id</th>
+                <td>{{ artist.id }}</td>
+            </tr>  #}
+            {# <tr>
+                <th>Pseudo</th>
+                <td>{{ artist.pseudo }}</td>
+            </tr> #}
+            <tr>
+                <th>Baseline</th>
+                <td>{{ artist.baseline }}</td>
+            </tr>
+            <tr>
+                <th>Droit</th>
+                {% if artist.droit == '9' %}
+                <td>Admin</td>
+                {% else %}
+                <td>User</td>
+                {% endif %}
+            </tr>
+            {# <tr>
+                <th>Mot de passe</th>
+                <td>{{ artist.password }}</td>
+            </tr> #}
+            {# <tr>
+                <th>UrlPageArtist</th>
+                <td>{{ artist.urlPageArtist }}</td>
+            </tr> #}
+            <tr>
+                <th>Description</th>
+                <td>{{ artist.description}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ artist.emailArtist }}</td>
+            </tr>
+            {# <tr>
+                <th>UrlImageAvatar</th>
+                <td>{{ artist.urlImageAvatar }}</td>
+            </tr> #}
+            <tr>
+                <th>Site web</th>
+                <td>{{ artist.urlSiteWebArtist }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ artist.urlFacebookArtist }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ artist.urlInstagramArtist }}</td>
+            </tr>
+            <tr>
+                <th>Création</th>
+                <td>{{ artist.dateCreation ? artist.dateCreation|date('d/m/Y à H:i') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="display:flex;">
+    {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary" href="{{ path('adminArtistes') }}">Retour à la liste</a>
+    {% endif %}
+    <a class="btn btn-warning" href="{{ path('artists_edit', {'id': artist.id}) }}">Modifier</a>
+     {% if is_granted('ROLE_ADMIN') %}
+    {{ include('artists/_delete_form.html.twig') }}
+    {% endif %}
+    </div>
+   
+{% endblock %}

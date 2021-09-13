@@ -1,0 +1,120 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+
+
+{% block header %}
+
+{{ parent() }}
+
+{% endblock %}
+
+
+
+{% block banner %}
+
+
+
+<div class="header-img" style="background-image:url('../assets/img/upload/6.jpg');">
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+
+
+
+
+
+
+<section class="artiste animated fadeInUpBig" ">
+
+
+
+<div style="">
+
+ <h1 style="text-align:center;font-weight:500;">{{ article.titleArticle}} <span><a href="">{{ article.category }}</a> | <a href="">{{ article.dateModification|date("d. m. Y") }}</a> | <a href=""> {{ article.author }}</a></span></h1>
+
+  <a href="assets/img/gamo/2.jpg" data-lightbox="roadtrip" data-title="Titre de l'image par Auteur">
+
+   
+
+
+
+        <img class="image-article"  src="{{ url('home') ~ article.blogImg }}" alt="{{ article.urlArticle }}">
+
+     
+
+            </a>
+
+<p style="margin-top:50px"> {{ article.contentArticle|raw }}</p>
+
+
+
+<span style="font-size:0.7rem;">Share on <span style="background:#1a07fe;border-radius:3px; color:#ffffff; height:30px; padding:2px 5px 3px; margin-left:3px;">Facebook</i></span>
+
+
+
+
+
+
+
+      
+
+        <form class="likeForm" >
+
+        <a type="submit" class="envoiLike" data-table="article" data-index="{{article.id}}" style="padding-top:20px; float:right;color:#555555;border:0px solid #cccccc;border-top-width:1px;font-size:1rem;"><div class="reponseAjax">click to <i class="fas fa-heart" style="margin:0 5px;display:inline-block;"></i><p class="nbLikeArticle" style="display:inline-block;margin-left:5px;">{{article.likeArticle}}</p></div></a>
+
+        <input type="hidden" name="idForm" value="like-form-art" >
+
+        </form>
+
+        <div>    
+
+</article>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+<script>
+
+
+
+
+
+</script>
+
+
+
+{% endblock %}

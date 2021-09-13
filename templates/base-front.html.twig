@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"> 
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
+
+        <title>{% block title %}AKA77{% endblock %}</title>
+                
+
+     
+
+        {% block stylesheets %}        
+  
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/lightbox.css')) }} ">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/main.css')) }} ">
+               <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/style_common.css')) }} ">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/style10.css')) }} ">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/gallery.css')) }} ">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/slider.css')) }} ">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/animate.css')) }} ">
+ 
+
+        {% endblock %}
+
+    </head>
+<body id="topPage">
+<a href="#topPage" class="smooth-scroll" ><div class="back-to-top" style=""><i class="fas fa-angle-up"></i></div></a>
+
+
+
+        <header class="opaque" style="display:block;">
+
+        {% block header %}
+
+<div class="menu animated fadeInUp">
+   {% set routeActive = app.request.attributes.get('_route') %}
+
+        <nav>
+            <a href="{{ url('home') }}">AKA77</a>
+            <a href="{{ url('galerie') }}">GALERIE</a>
+            <a href="{{ url('blog') }}">ACTUALITÉ</a>
+            <a href="{{ url('artistes') }}">ARTISTES</a>
+            <a href="{{ url('contact') }}">CONTACT</a>               
+        </nav>
+
+
+        <div class="menu-responsive" onclick="return true">
+        <ul >
+         <li style="font-size:1.5rem;"> <i class="fas fa-bars"></i></li>
+        <li><a href="{{ url('home') }}">AKA77</a></li>
+        <li> <a href="{{ url('galerie') }}">GALERIE</a></li>
+        <li> <a href="{{ url('blog') }}">ACTUALITÉ</a></li>
+        <li> <a href="{{ url('artistes') }}">ARTISTES</a></li>
+        <li> <a href="{{ url('contact') }}">CONTACT</a> </li>
+        </ul>
+</div>
+
+    
+    
+
+       
+</div>
+        {% endblock %}
+
+                </header>
+{% block banner %}
+ 
+<div class="header-img" style="background-image:url('assets/img/upload/6.jpg');">
+</div>
+ {% endblock %}
+ 
+
+          
+
+        <main>
+        {% block body %}{% endblock %}
+
+
+        
+        </main>
+
+     
+        {% block footer %}
+   
+
+
+
+
+
+
+    <footer>
+
+<nav><a href="{{ url('legacy') }}">mentions légales</a> </nav>
+<nav>   <a href="{{ url('admin') }}" target="blank" class="black">admin</a> 
+<a href="{{ url('team') }}">team d <span>copyright@2018</span></a>
+</nav>
+</footer>
+    {% endblock %}
+        
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="{{ absolute_url(asset('assets/js/lightbox.js')) }}"></script>
+<script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>
+
+
+<script>
+
+
+/************ SCROLL HEADER ************/
+
+
+  window.setInterval(() => {
+
+      if(window.pageYOffset>100){
+         $("header").addClass("opaque").fadeIn();
+       }
+       else
+         $("header").removeClass("opaque");
+      }, 100)
+
+    window.setInterval(() => {
+      if(window.pageYOffset>100){
+       $("nav a").addClass("color").fadeIn();
+        }
+       else
+         
+         $("nav a").removeClass("color");
+ 
+    }, 100)
+
+/******** VERIFICATION DU FORMULAIRE *******************/
+ 
+function verifForm(){
+
+    const name = document.querySelector('input[name="name"]');
+    const nameValue = name.value;
+
+    let hasError = false;
+    let messageError = "";
+
+    if(nameValue.length < 4){
+        hasError = true;
+        messageError = "Votre réponse doit etre supérieure à 4 caractères";
+    }
+
+    if(nameValue.length > 60){
+        hasError = true;
+        messageError = "Votre réponse doit etre inférieure à 60 caractères";
+    }
+
+    if(hasError == true){
+        name.classList.add('is-invalid');
+        document.querySelector('input[name="name"] + div.invalid-feedback').textContent = messageError;//affiche le message erreur
+        document.querySelector('input[name="name"] + div.invalid-feedback').classList.add('display'); 
+    }else{
+        name.classList.remove('is-invalid');
+        name.classList.add('is-valid');
+        document.querySelector('input[name="name"] + div.invalid-feedback').classList.remove('display'); 
+    }
+
+    const message = document.querySelector('textarea[name="message"]');
+    const messageValue = message.value;
+  
+
+    hasError = false;
+    messageError = "";
+
+    if(messageValue.length < 4){
+        hasError = true;
+        messageError = "Votre réponse doit etre supérieure à 4 caractères";
+    }
+
+    if(messageValue.length > 60){
+        hasError = true;
+        messageError = "Votre réponse doit etre inférieure à 60 caractères";
+    }
+
+    if(hasError == true){
+        message.classList.add('is-invalid');
+        document.querySelector('textarea[name="message"] + div.invalid-feedback').textContent = messageError;//affiche le message erreur
+        document.querySelector('textarea[name="message"] + div.invalid-feedback').classList.add('display'); 
+    }else{
+        message.classList.remove('is-invalid');
+        message.classList.add('is-valid');
+        document.querySelector('textarea[name="message"] + div.invalid-feedback').classList.remove('display'); 
+    }
+
+    
+   
+    
+    const email = document.querySelector('input[name="email"]');
+    const emailValue = email.value;
+ 
+
+    hasError = false;
+    messageError = "";
+    
+    if(emailValue.includes('@') == false || emailValue.includes('.') == false ){
+        hasError = true;
+        messageError = "Votre email doit etre valide et comporter un @ et un .";
+    }
+    
+    if(hasError == true){
+        email.classList.add('is-invalid');
+        document.querySelector('input[name="email"] + div.invalid-feedback').textContent = messageError;//affiche le message erreur
+        document.querySelector('input[name="email"] + div.invalid-feedback').classList.add('display'); 
+    }else{
+        email.classList.remove('is-invalid');
+        email.classList.add('is-valid');
+        document.querySelector('input[name="email"] + div.invalid-feedback').classList.remove('display');
+    }
+
+     return hasError == false;
+
+};
+
+
+$('#submit').on("click", function handleClick(event){
+
+    event.preventDefault(event);
+    verifForm();
+    if(verifForm()  == true){
+        console.log('ok')
+    }else{
+        console.log('no')
+    }
+ 
+});
+
+
+/************** SCRIPT SEARCH **********/
+
+urlAjax = '{{ path("ajax") }}';
+url = '{{ path("home") }}';
+
+$(function () {
+  
+    
+    $("form.search").on("submit", function(event){
+        event.preventDefault();
+        console.log("formulaire bloqué");
+
+        paramFormGet = $(this).serialize();
+        console.log(paramFormGet);
+        var listeResultat = $(this).find(".listeResultat");
+        listeResultat.html(""); // VIDE LA LISTE
+
+        $.post(urlAjax, paramFormGet, function(data){
+
+            console.log(data);
+    
+            for(a=0; a < data.tabArticle.length; a++)
+            {
+                console.log(a);
+                var article = data.tabArticle[a];
+                var title = article.titleArticle;
+                var content = article.contentArticle;
+                var image = article.blogImg;
+                var url = article.urlArticle;
+                var date = article.dateModification;
+               var codeHTML = '<section class="blog animated fadeInUpBig" style="width:100%;margin-top:80px;"> <h6 style="margin-left:0px;text-align:left;font-size:1rem;">Résultat de votre recherche</h6> <article class="article" style="padding:20px;height:120px;">' 
+                                    + '<h3>' + title +'</h3>'
+                                    + '<a href="#"> Lire l\'article</a>'
+                   /*                  + '<div><img src="'+ url + image + '" style="width:100px; height:100px; object-fit:cover;"></div>'*/
+                               + '</article></section>';
+                listeResultat.append(codeHTML);    
+            }
+        });
+    });
+});
+
+
+
+
+
+
+</script>
+
+
+
+        </article>

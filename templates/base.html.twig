@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="robots" content="noindex, nofollow">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" rel="stylesheet"/>
+                    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"/>
+                       <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+     
+                    <link rel="stylesheet" href="{{ asset("assets/menu.css") }}">
+                        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+                                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+                                    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
+
+                                    <title>
+                                        {% block title %}{% endblock %}
+                                    </title>
+                                    {% block stylesheets %}{% endblock %}
+                                </head>
+                                <body>
+                                    <input type="checkbox" id="menu-toggle"/>
+                                    <label for="menu-toggle" class="menu-icon hvr-icon-fade">
+                                        <i class="fas fa-cogs hvr-icon hvr-grow"></i>
+                                    </label>
+                                    <div class="slideout-sidebar">
+                                        <span id="date">
+                                            {{ "now"|date("d/m/Y") }} 
+
+
+                                            
+                                               <a href="{{ url('admin') }}">
+                        
+                                      
+ 
+
+                                               
+                                                <img src="{{ asset('assets/img/test2.jpg') }}" alt="avatar" style="width:120px;margin:30px 10px 0;  margin-top:40px!important;"> 
+                            <h1 style="font-size:1rem!important; margin:10px;">{{ app.user.username }}</h1> 
+                           </a>  
+                           </span>
+   
+                          <ul>
+                                                <li>
+                                                 
+                                                <!--
+                                                <a href="{{ url('admin') }}">
+                                             
+ test
+                                                </a>
+                                                -->
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('adminBlog') }}">
+                                                    <i class="fas fa-file-alt"></i>Articles</a>
+                                            </li>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                <li>
+                                                    <a href="{{ url('adminGalerie') }}">
+                                                        <i class="fas fa-images"></i>Galerie</a>
+                                                </li>
+                                            {% endif %}
+                                            {% if is_granted('ROLE_USER') %}
+                                                <li>
+                                                    {# {% set id = app.user.getId() %} #}
+                                                    <a href="{{ url('adminGalerie') }}">
+                                                        <i class="fas fa-images"></i>Ma Galerie</a>
+                                                </li>
+                                            {% endif %}
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                <li>
+                                                    <a href="{{ url('adminArtistes') }}">
+                                                        <i class="fas fa-users"></i>Artistes</a>
+                                                </li>
+                                            {% endif %}
+                                            {% if is_granted('ROLE_USER') %}
+                                                <li>
+                                                    <a href="{{ path('artists_show', {'id': app.user.getId() }) }}">
+                                                        <i class="fas fa-users"></i>Profil</a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="baseContent" class="content-container">
+                                        <header>                                      
+                                        <div style="float:right;">
+                                       <a href="{{ url('home') }}" target="_blank" style=" margin-top:1rem;margin-right:0.8rem">
+ 
+                                        <i class="fas fa-home" style=" margin-top:1.45rem;margin-right:0.8rem;"></i>
+                                                </a>
+                                            <a style="float:right; margin-top:1.4em;margin-right:0.3em" href="{{ url('logout')}}">
+                                                <i class="fas fa-sign-in-alt" style=""></i>
+                                            </a>
+                                            </div>
+                                            <h2 id="welcome"></h2>
+                                        </header>
+                                        <div id="content">
+                                            {% block body %}{% endblock %}
+                                        </div>
+                                        <footer></footer>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+                                        <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                                        <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+                                        <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+                                        <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                                        <script>
+                                            ClassicEditor.create(document.querySelector('#blog_article_contentArticle')).catch(error => {
+                                                console.error(error);
+                                            });
+                                        </script>
+                                        <script>
+                                            $('#gallery_uploadGalleryForm').on('change', function () { // get the file name
+                                                var fileName = $(this).val();
+                                                // replace the "Choose a file" label
+                                                $(this).next('.custom-file-label').html(fileName);
+                                            })
+                                        </script>
+                                        <script>
+                                            $('#artists_urlImageAvatar').on('change', function () { // get the file name
+                                                var fileName = $(this).val();
+                                                // replace the "Choose a file" label
+                                                $(this).next('.custom-file-label').html(fileName);
+                                            })
+                                        </script>
+                                        <script>
+                                            $('#blog_article_edit_uploadBlogImg').on('change', function () { // get the file name
+                                                var fileName = $(this).val();
+                                                // replace the "Choose a file" label
+                                                $(this).next('.custom-file-label').html(fileName);
+                                            })
+                                        </script>
+                                        <script>
+                                            $('#blog_article_blogImg').on('change', function () { // get the file name
+                                                var fileName = $(this).val();
+                                                // replace the "Choose a file" label
+                                                $(this).next('.custom-file-label').html(fileName);
+                                            })
+                                            // ###################### Normalize Text #######################"
+                                            $(".articleTitle").on("keyup", afficheTextNormalize);
+                                            $(".pseudoArtiste").on("keyup", afficheTextNormalize);
+                                            function afficheTextNormalize() {
+                                                let tab = [];
+                                                let classInput = this.getAttribute('class')
+                                                texte = this.value
+                                                console.log(texte)
+                                                for (i = 0; i <= tab.length; i ++) {
+                                                    texte = supprimeChaine(texte, tab[i])
+                                                }
+                                                texte = texte.trim().replace(/[^a-zA-Z0-9_-]+(?=)/g, '-');
+                                                if (classInput.search("articleTitle") >= 0) {
+                                                    document.querySelector(".articleUrl").value = texte.toLowerCase()
+                                                } else {
+                                                    document.querySelector(".artisteUrl").value = texte.toLowerCase()
+                                                }
+                                            }
+                                            function supprimeChaine(texte, valeur) {
+                                                return texte.replace(" " + valeur + " ", '-');
+                                            }
+                                        </script>
+                                        {% block javascripts %}{% endblock %}
+                                    </body>
+                                </html>
+                            
+
+
+
+
+  

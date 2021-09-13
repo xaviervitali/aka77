@@ -1,0 +1,57 @@
+
+{% extends 'base-front.html.twig' %}
+
+{% block header %}
+
+   {{ parent() }}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<h1>CONTACT</h1>
+<section class="animated fadeInUpBig" style="margin:50px 20%; ">
+<p>Contactez nous pour plus d'informations</p>
+
+        <form> 
+                   
+                        <label for="name">Nom</label>
+                        <input name="name" id="name"  type="text" placeholder="" class="form-control" id="name" placeholder="" value="" required>
+                        <div class="invalid-feedback">test</div>
+                     
+                        <label for="email">Mail</label>
+                        <input type="email" id="email" placeholder="" class="form-control" id="email" name="email" placeholder="" value="" required>
+                        <div class="invalid-feedback"></div>
+
+ 
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" placeholder="" class="form-control" id="message" rows="3" required></textarea>
+                        <div class="invalid-feedback"></div>
+                
+
+
+
+
+                    <button class="btn " type="submit" id="submit" style="margin-top:20px;">envoyer</button>
+        </form>
+      
+</section>
+
+
+<section class="map"> 
+
+<h1 class="galery animated fadeInUpBig">LE LIEU</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.422743860837!2d5.364287315857656!3d43.326342179133945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c05bb02d2395%3A0x9a744c6d902ff071!2s77+Rue+de+Lyon%2C+13015+Marseille!5e0!3m2!1sfr!2sfr!4v1548342848515"></iframe></section>
+</section>
+{% endblock %}
+
+{% block javascript %}
+   
+
+<script>
+
+<script>
+
+{% endblock %}

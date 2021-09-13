@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles - AKA77{% endblock %}
+
+{% block body %}
+<style>
+    img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+</style>
+    <h1>blog</h1>
+    <a class="btn btn-success" href="{{ path('blog_article_new') }}">Créer un nouvel article</a>
+
+    <table style="margin-top:3em" class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Article</th>
+                {# <th>Lien de l'article</th> #}
+                <!--
+                <th>article</th>
+                -->
+                <th>likes</th>
+                {# <th>Date</th> #}
+                <th>Image</th>
+                <th>Category</th>
+               
+                <th>Auteur</th>
+              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog_article in blog_articles %}
+            <tr>
+                {# <td>{{ blog_article.id }}</td> #}
+                <td> <a href="{{ path('blog_article_show', {'id': blog_article.id}) }}">{{ blog_article.titleArticle }}</a></td>
+                {# <td>{{ blog_article.urlArticle }}</td> #}
+                                {# {% set myTextVariable = blog_article.contentArticle %} #}
+                                {# <td>{{blog_article.contentArticle|striptags|slice(0,25) ~ '...' }}</td> #}
+                {# <td>{{ blog_article.contentArticle | raw() }}</td> #}
+                <td>{{ blog_article.likeArticle }}</td>
+                {# <td>{{ blog_article.dateModification ? blog_article.dateModification|date('d/m/Y à H:i') : '' }}</td> #}
+                <td> <img src="{{ asset(blog_article.blogImg) }}" alt="{{ blog_article.blogImg }}"></td>
+                
+                {# <th>Categorie de l'article</th> #}
+                {% if blog_article.category == '1' %}
+                <td>Actu</td>
+                {% elseif blog_article.category == '2' %}
+                <td>Zoom sur</td>
+                {% else %}
+                <td>Divers</td>
+                {% endif %}
+            
+                {# <td>{{ blog_article.category }}</td> #}
+                <td>{{ blog_article.author }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('blog_article_show', {'id': blog_article.id}) }}">Voir</a>
+                    <a class="btn btn-warning" href="{{ path('blog_article_edit', {'id': blog_article.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Pas de résultats trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

@@ -1,0 +1,62 @@
+
+{% extends 'base-front.html.twig' %}
+ {% block banner %}
+ 
+<div class="header-img" style="background-image:url('../assets/img/upload/6.jpg');">
+<div class="avatar" >
+<img src="{{user.urlImageAvatar }}" alt="Avatar artiste" >
+</div>
+
+</div>
+ {% endblock %}
+
+
+{% block body %}
+
+
+<a class="lien-retour"  href="{{ url('artistes') }}">< Retour à la liste des artistes</a>
+
+
+
+
+
+<section class="artiste animated fadeInUpBig" >
+
+
+<div style="">
+ <h1 style="text-align:center;font-weight:500;">{{ user.pseudo}}<span> {{ user.baseline }}</span></h1>
+
+<span style="margin-right:10px; opacity:0.5;"><i class="fab fa-facebook" style="margin-right:10px;"></i>
+<i class="fab fa-instagram" style="margin-right:10px;  "></i>
+<i class="fas fa-at" style="margin-right:10px; color:#333;font-size:1rem;opacity:0.5;"></i>
+<i class="far fa-envelope" style="margin-right:10px"></i></span>
+<p style="margin-top:10px">
+{{ user.description }}
+<div> 
+
+
+
+<span style="font-size:0.7rem;">Share on <span style="background:#1a07fe;border-radius:3px; color:#ffffff; height:30px; padding:2px 5px 3px; margin-left:3px;">Facebook</i></span>
+
+</section>
+ 
+
+<section  id="individualGallery" class="general-galery animated fadeInUpBig">
+
+
+{% if gallery|length !=0 %}
+<h2  style="text-align:center;font-weight:500;margin-bottom: 20px ;">Galerie personnelle</h2>
+{% endif %}
+{% for image in gallery %}
+<a  data-table ="gallery" data-index={{ image.id }} href="{{url('home') ~ image.urlImgOriginal}}" data-lightbox="roadtrip" data-title=" {{image.imgDescription}} <span class='like'> <i class='fas fa-eye' style='margin-right: 10px'></i>{{ image.imgLike }}</span>">
+            <div class="overlay">
+            <img src="{{url('home') ~ image.imgMedium}}" alt="{{image.imgName}}">
+            </div>
+            </a>
+{% endfor %}
+
+</section>
+{% endblock %}
+
+
+

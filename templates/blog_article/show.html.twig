@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title %}Voir mon article - AKA77{% endblock %}
+{% block body %}
+<style>
+
+    #boutons {
+        display: inline;
+    }
+
+</style>
+    <h1></h1>
+    <table class="table">
+        <tbody>
+            {# <tr>
+                <th>Id</th>
+                <td>
+                    {{ blog_article.id }}</td>
+            </tr> #}
+            <tr>
+                <th>Titre </th>
+                <td>
+                    {{ blog_article.titleArticle }}</td>
+            </tr>
+            {# <tr>
+                <th>Lien </th>
+                <td>
+                    {{ blog_article.urlArticle }}</td>
+            </tr> #}
+            <tr>
+                <th>Contenu </th>
+                 {# <td>{{blog_article.contentArticle| raw()}}</td> #}
+                    <td>{{blog_article.contentArticle|striptags|slice(0,250) ~ '...' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de likes</th>
+                <td>
+                    {{ blog_article.likeArticle }}</td>
+            </tr>
+            <tr>
+                <th>Date de modification</th>
+                <td>
+                    {{ blog_article.dateModification ? blog_article.dateModification|date('d/m/Y à H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image </th>
+                <td><img src="{{ asset(blog_article.blogImg) }}" alt="{{ blog_article.blogImg }}"></td>
+            </tr>
+            <tr>
+                <th>Category </th>
+                {% if blog_article.category == '1' %}
+                <td>Actu</td>
+                {% elseif blog_article.category == '2' %}
+                <td>Zoom sur</td>
+                {% else %}
+                <td>Divers</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Auteur </th>
+                <td>
+                    {{ blog_article.author }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="boutons">
+        <a class="btn btn-warning" href="{{ path('blog_article_edit', {'id': blog_article.id}) }}">Modifier</a>
+    <a class="btn btn-primary" href="{{ path('adminBlog') }}">Retour à la liste</a>
+{{ include('blog_article/_delete_form.html.twig') }}
+    
+    {# {{ include('blog_article/_delete_form.html.twig') }} #}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+
+<section class="galery animated fadeInUp">
+
+
+
+
+ {% for user in users %}
+
+
+
+
+
+<a href="{{ path("artiste_show_url", {urlPageArtist: user.urlPageArtist}) }}">
+<img src="{{user.urlImageAvatar}}" alt="" class="fadeInUp">
+<div class="artist-name">{{ user.pseudo}}</div>
+</a>
+
+
+
+
+{% endfor %}
+</section>

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modification article - AKA77{% endblock %}
+{% block body %}
+    <h1>Modifier l'article</h1>
+    {{ include('blog_article/_form.html.twig', {'button_label': 'Mettre à jour l\'article'}) }}
+    <a class="btn btn-primary" href="{{ path('adminBlog') }}">Retour à la liste</a>
+    {{ include('blog_article/_delete_form.html.twig') }}
+{% endblock %}

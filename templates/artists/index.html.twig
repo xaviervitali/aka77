@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page artistes - AKA77{% endblock %}
+
+{% block body %}
+
+
+
+<style>
+
+    img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+</style>
+
+    <h1>Les artistes</h1>
+
+    <table style="margin-top:3em;text-align:center;" class="table">
+        <thead style="font-size:20px">
+            <tr>
+                <th>Pseudo</th>
+                <th>Description</th>
+                {# <th>Email</th> #}
+                <th>Avatar</th>
+               
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr>
+                <td>{{ artist.pseudo }}</td>
+                <td>{{artist.description|striptags|slice(0,300) ~ '...' }}</td>
+                {# <td>{{ artist.emailArtist }}</td>  #}
+                <td> <img src="{{ artist.urlImageAvatar }}" alt=""></td>
+                {# <td>{{ artist.dateCreation ? artist.dateCreation|date('d/m/Y à H:i') : '' }}</td> #}
+                <td>
+                    <a class="btn btn-primary" href="{{ path('artists_show', {'id': artist.id}) }}">Voir</a>
+                    <a class="btn btn-warning" href="{{ path('artists_edit', {'id': artist.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Pas de résultats trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a style="margin-top:3em" class="btn btn-success" href="{{ path('artists_new') }}">Ajouter un artiste</a>
+{% endblock %}

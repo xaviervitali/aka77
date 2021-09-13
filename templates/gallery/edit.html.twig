@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'image - AKA77{% endblock %}
+
+{% block body %}
+
+<style>
+
+    .custom-file, .required {
+        display: none;
+    }
+
+</style>
+    <h1>Modifier votre image</h1>
+
+    <img style="width:300px;height:300px;display:block; margin:0 auto" src="{{ asset(gallery.urlImgOriginal) }}" alt="{{ gallery.imgName }}">
+    
+
+{# EQUIVALENT DE LA BALISE OUVRANTE <form> #}
+{{ form_start(form) }}
+
+
+{# INPUT NOM DE L'IMAGE #}
+{{ form_row(form.imgName, {
+        'label': 'Nom de l\'image', 
+        'attr': {'placeholder': 'Entrez le nom de l\'image',
+    }}) 
+}}
+
+{# INPUT DE L'UPLOAD D'IMAGE #}
+{# {{ form_row(form.uploadGalleryForm, {
+        'label': 'Sélectionnez votre image',
+        'attr': {
+            'placeholder': 'Cliquez ici pour choisir votre image',
+            'required': false
+    }}) 
+}}      #}
+
+{# INPUT NOM DE L'ARTISTE #}
+{{ form_row(form.artist, {
+        'label': 'Nom de l\'artiste', 
+        'attr': {'placeholder': 'Entrez le nom de l\'artiste'
+    }}) 
+}}
+
+{# INPUT DESCRIPTION DE L'ARTISTE #}
+{{ form_row(form.imgDescription, {
+        'label': 'Description de l\'image', 
+        'attr': {'placeholder': 'Entrez la description de l\'image'
+    }}) 
+}}
+
+{# BOUTON DE VALIDATION DU FORMULAIRE #}
+<button type="submit" class="btn btn-success">{{ button_label|default('Mettre à jour') }}</button> 
+        <a class="btn btn-primary" href="{{ path('adminGalerie') }}">Retour à la liste</a>
+        
+
+
+{# EQUIVALENT DE LA BALISE FERMANTE </form> #}
+{{ form_end(form) }} 
+
+{{ include('gallery/_delete_form.html.twig') }}
+
+
+{% endblock %}

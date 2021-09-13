@@ -1,0 +1,111 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+
+    
+ 
+
+
+     <h1>ACTUALITÉ</h1>
+
+  <!--
+       <div style="width:100%;display:flex;">
+
+<aside style="width:25%;display:flex;margin: 0 2%;border:0px solid #cccccc;padding:0px 20px">
+      
+   
+
+       
+</aside>
+-->
+
+     <section id="search">
+
+        <p style="">Suivez l'actualité de l'asso...</p>
+     <form class="search">
+            <input type="text" name="recherche" required class="form-control" placeholder="search..."style="width:100%;margin-bottom:50px;height:50px;">
+            <button style="float:right;margin-right:0%;">RECHERCHER</button>
+       <div class="listeResultat" >
+         
+          
+          </div>
+        </form>
+        </section>
+    <section class="blog animated fadeInUpBig">
+
+ {% for article in articles %}
+
+        <article class="article">
+     
+        <div class="article-content">
+        <a href="{{ path("article_show_url", {urlArticle: article.urlArticle}) }} ">
+        <div class="img-article">
+
+
+        <img src="{{ url('home') ~ article.blogImg }}" alt="{{ article.urlArticle }}">
+
+        </div>
+        <div class="article-header" >
+        <h3 style="margin:0;">{{ article.titleArticle }}</h3>
+        <span> auteur :<a href=""> {{ article.author }}</a> <a href=""> - category : {{ article.category }}</a> <a href="">- {{ article.dateModification|date("d m Y") }}</a></span>
+        </div>
+        <p> {{ (article.contentArticle|slice(0,300))|raw }}<a href="{{ path("article_show_url", {urlArticle: article.urlArticle}) }}" style=" display:block;color: #276EFE; font-size:0.8rem; text-transform:lowercase;">Lire la suite</a></p>
+        </a></p>
+      
+        <form class="likeForm">
+        <a class="" type="submit" class="envoiLike" ><div class="reponseAjax "><i class="fas fa-heart " style="margin:0 5px;"></i><p>0</p></div></a>
+        <input type="hidden" name="idForm" value="like-form-art" >
+        </form>
+        <div>     
+
+        </article>
+          {% endfor %}
+
+<!--
+
+     {% for article in articles %}
+        <article class="article">
+     
+        <div class="article-content">
+        <a href="{{ url('article') }}">
+        <div class="img-article">
+        <img src="assets/img/gamo/2.jpg" alt="">
+        </div>
+        <div class="article-header" >
+        <h3>TITRE</h3>
+        <span><a href=""> auteur : </a>- <a href="">category : </a> - date : </span>
+        </div>
+        <p> CONTENU ARTICLE<a href="">Lire la suite</a></p>
+        </a>
+      
+        <form class="likeForm">
+        <a class="" type="submit" class="envoiLike"><div class="reponseAjax"><i class="fas fa-heart" style="margin:0 5px;"></i><p>0</p></div></a>
+        <input type="hidden" name="idForm" value="like-form-art" >
+        </form>
+        <div>     
+
+        </article>
+
+
+
+
+          {% endfor %}
+-->
+<div style="display:block;width:100%;margin-top:30px;">PAGES</div>
+     <div class="pagination" style="">
+
+     {% for p in 1..pageMax %}
+            <a href="{{ url('blog', { numberPage : p } )}}" style="border:1px solid #cccccc; padding:5px 15px;margin:10px 10px 20px 0;display:block;background:#e0e0e0;"> {{ p }}</a>
+     {% endfor %}
+
+    </div>
+
+
+</section>
+
+
+ 
+{% endblock %}
+
+
+
+

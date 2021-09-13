@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article - AKA77{% endblock %}
+
+{% block body %}
+
+<style>
+
+    {# #blog_article_urlArticle {
+        display: none;
+    } #}
+
+    {# .active {
+        display: none;
+    } #}
+</style>
+
+    <h1 style="">Créer un nouvel article</h1>
+
+    {{ include('blog_article/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('adminBlog') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Galerie - AKA77{% endblock %}
+
+{% block body %}
+
+    <h1 style ="margin-bottom:50px;">Galerie</h1>
+    <a class="btn btn-success" href="{{ path('gallery_new') }}" style="margin-bottom:50px;">Ajouter une nouvelle Image</a>
+<section style="display:flex; justify-content:flex-start; flex-wrap:wrap; margin-bottom:50px; ">
+
+        {% for gallery in galleries %}
+
+            <figure style="text-align:center;  padding:20px;">
+  <a href="{{ path('gallery_edit', {'id': gallery.id}) }}">
+  <img src="{{ asset( gallery.imgSmall) }}" alt="{{ gallery.imgName }}" style="width:250px; height:200px; object-fit:cover; "></a>
+  <figcaption><strong>{{ gallery.imgName }}</strong></figcaption>
+     {# <a href="{{ path('gallery_show', {'id': gallery.id}) }}" class="btn btn-primary">Ouvrir</a> #}
+                    {# <a href="{{ path('gallery_edit', {'id': gallery.id}) }}" class="btn btn-primary">Modifier / Supprimer</a> #}
+</figure>
+        {% endfor %}
+
+</section>
+
+{% endblock %}

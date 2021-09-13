@@ -1,0 +1,36 @@
+
+{% extends 'base-front.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<section class="galery animated fadeInUp">
+
+<h1 class="galery animated fadeInUpBig">LES ARTISTES</h1>
+ {% for user in users %}
+
+<div>
+    <a href="artiste.html">
+                Id
+               {{ user.id }}
+                 Email
+                {{ user.email }}
+           
+               Username
+                {{ user.username }}
+            
+               Password
+                {{ user.password }}
+           
+                <th>Level</th>
+               {{ user.level }}
+           
+               
+                {{ user.datePublication ? user.datePublication|date('Y-m-d H:i:s') : '' }}
+  </a>     
+</div>
+    {% endfor %}
+
+
+</section>
+{% endblock %}

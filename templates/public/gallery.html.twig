@@ -1,0 +1,25 @@
+{% extends 'base-front.html.twig' %}
+
+{% block header %}
+
+
+   {{ parent() }}
+
+{% endblock %}
+
+ {% block banner %}
+ {% endblock %}
+
+ 
+{% block body %}
+
+
+  <section   id="publicGallery" class="general-galery animated fadeInUpBig">
+<h1 style="display:none;margin:120px auto 10px;">Galerie Globale</h1>
+<p style="display:none;text-align:center; padding: 0 20px;margin-bottom:20px;">Cette galerie contient des images pêles-mêles des artistes du site, l'ordre y est aléatoire. Les artistes représentés sont {% for artiste in listeArtiste %} <strong>{{artiste.artist}}</strong> {% endfor %} </p>
+</section>
+            
+
+
+
+{% endblock %}

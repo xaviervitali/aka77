@@ -1,0 +1,39 @@
+{% extends 'base-front.html.twig' %}
+
+{% block header %}
+
+
+   {{ parent() }}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+ 
+
+  <section id="publicGallery" style = "display:flex; flex-wrap:wrap; align-items:center; justify-content:space-around;">
+
+  
+   {# {% for image in gallerys %} #}
+     {# <figure data-index-id={{image.id}} > #}
+            {# <a href="{{image.urlImgOriginal}}" data-lightbox="roadtrip"  data-index-id={{image.id}}> #}
+            {# <div class="overlay"> #}
+            {# <img src="{{image.urlImgOriginal}}" data-index-id={{image.id}} style="max-width:200px; max-height:200px;object-fit:cover;"> #}
+            {# <figcaption></figcaption> #}
+            {# </div> #}
+    {# </figure> #}
+     {# {% endfor  %} #}
+    </section>
+   {# <section class="general-galery">
+            <a href="{{image.urlImgOriginal}}" data-lightbox="roadtrip"  data-index-id={{image.id}}>
+            <div class="overlay">
+            <img src="{{image.urlImgOriginal}}" data-index-id={{image.id}}>
+            </div>
+    </section> #}
+            
+
+
+{% endblock %} 

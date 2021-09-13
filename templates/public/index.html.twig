@@ -1,0 +1,103 @@
+{% extends 'base-front.html.twig' %}
+
+{% block header %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+
+
+ 
+{% include 'public/section-artistes.html.twig' %}
+
+
+<section class="description">
+<article>
+
+<h1 style="color:#ffffff;">LE COLLECTIF AKA77</h1>
+<!--
+<form >        
+       
+            <label for="name"> </label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Nom" value="">
+            <div class="valid-feedback"></div>
+
+            <label for="email"></label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Mail" value="">
+            <div class="valid-feedback"></div>      
+            
+            <button class="btn btn-primary" type="submit" style="margin-top:30px;text-align:right;">envoyer</button>
+            
+            <input type="hidden" name="idForm" value="newsletterCreate" >
+      
+</form>
+-->
+
+ 
+
+        </article>
+
+
+
+
+</section>
+
+<section class="map" class="galery animated fadeInUp"> 
+
+<h1 class="galery animated fadeInUpBig">LE LIEU</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.422743860837!2d5.364287315857656!3d43.326342179133945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c05bb02d2395%3A0x9a744c6d902ff071!2s77+Rue+de+Lyon%2C+13015+Marseille!5e0!3m2!1sfr!2sfr!4v1548342848515"></iframe>
+</section>
+
+<section class="blog" style="display:none;">
+
+
+<h1>En ce moment</h1>
+<!--
+<form >        
+       
+            <label for="name"> </label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Nom" value="">
+            <div class="valid-feedback"></div>
+
+            <label for="email"></label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Mail" value="">
+            <div class="valid-feedback"></div>      
+            
+            <button class="btn btn-primary" type="submit" style="margin-top:30px;text-align:right;">envoyer</button>
+            
+            <input type="hidden" name="idForm" value="newsletterCreate" >
+      
+<div class="message-form"><?php echo $newsletterCreateMessage ?? "" ?></div>
+</form>
+-->
+
+ <article class="article animated fadeInUpBig">
+     
+        <div class="article-content">
+        <a href="article">
+        <div class="img-article">
+        <img src="assets/img/rish/1.jpg" alt="">
+        </div>
+        <div class="article-header" >
+        <h3>TITRE 3</h3>
+        <span><a href="article"> auteur : AKA77 </a>- <a href="article">category : ACTU</a> - date : mars 2018</span>
+        </div>
+        <p> Extrait de l'article... <a href="article">Lire la suite</a></p>
+        </a>
+      
+        <form class="likeForm">
+        <a class="" type="submit" class="envoiLike"><div class="reponseAjax"><i class="fas fa-heart" style="margin:0 5px;"></i><p>0</p></div></a>
+        <input type="hidden" name="idForm" value="like-form-art" >
+        </form>
+        <div>     
+
+        </article>
+
+
+
+</section>
+
+
+
+{% endblock %}
